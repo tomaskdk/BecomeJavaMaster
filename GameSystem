@@ -1,0 +1,70 @@
+package work;
+
+import java.util.Scanner;
+
+public class GameSystem {
+
+	public static int victory =0;
+	public static void scan(int a[][], int x, int y, int code, int i) {
+		Scanner scanner = new Scanner(System.in);
+		x = scanner.nextInt() - 1;
+		Scanner scanner2 = new Scanner(System.in);
+		y = scanner.nextInt() - 1;
+		if (y >= 18 || x >= 18) {
+			GameSystem.error(a, x, y, code, i);
+		} else if (a[x][y] == 1 || a[x][y] == 2) {
+			GameSystem.error(a, x, y, code, i);
+		} else {
+			a[x][y] = code;
+		}
+	}
+
+	public static void error(int a[][], int x, int y, int code, int i) {
+		System.out.println("Wrong Code!");
+		System.out.printf("Player "+(i % 2 + 1)+" please insert x and y again");
+		System.out.println();
+		GameSystem.scan(a, x, y, code, i);
+	}
+
+	public static void printBase(int a[][]) {
+		for (int y = 0; y < a.length; y++) {
+			for (int x = 0; x < a.length; x++) {
+				if (a[x][y] == 1) {
+					System.out.print("[o]");
+				} else if (a[x][y] == 2) {
+					System.out.print("[x]");
+				} else
+					System.out.print("[ ]");
+			}
+			System.out.println();
+		}
+
+	}
+
+	public static void victory(int a[][], int i) {
+		int determine = 0;
+		for (int y = 0; y < a.length; y++) {
+			for (int x = 0; x < a.length; x++) {
+				for (int b = 1; b <= 4; b++) {
+					if (x <= 14 && a[x][y] != 0 && a[x][y] == a[x + b][y]) {
+						determine = determine + 1;
+					} else if (y <= 14 && a[x][y] != 0 && a[x][y] == a[x][y + b]) {
+						determine = determine + 1;
+					} else if (x <= 14 && y <= 14 && a[x][y] != 0 && a[x][y] == a[x + b][y + b]) {
+						determine = determine + 1;
+					} else if (x <= 14 && y >= 4 && a[x][y] != 0 && a[x][y] == a[x + b][y - b]) {
+						determine = determine + 1;
+					} else {
+						determine = 0;
+					}
+				}
+				if (determine == 4) {
+					System.out.println("Game over!");
+					System.out.printf("Player " + (i % 2 + 1) + " wins!");
+					victory=1;
+					break;
+				}
+			}
+		}
+	}
+}
