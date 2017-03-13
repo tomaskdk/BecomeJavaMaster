@@ -1,5 +1,4 @@
-# BecomeJavaMaster
-# Main for Omok, all it does is receive the x,y variables
+//Main for Omok, all it does is receive the x,y variables
 package work;
 
 import java.util.Scanner;
