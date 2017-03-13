@@ -1,0 +1,34 @@
+# BecomeJavaMaster
+package work;
+
+import java.util.Scanner;
+
+public class main extends GameSystem {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		GameSystem game2 = new GameSystem();
+		int board[][] = new int[18][18];
+		int x = 0;
+		int y = 0;
+
+		for (int i = 0; i >= 0; i++) {
+			game2.printBase(board);
+			if (i % 2 == 0) {
+				System.out.println("Player 1, please insert x and y");
+				game2.scan(board, x, y, 1, i);
+			}
+			if (i % 2 == 1) {
+				System.out.println("Player 2, please insert x and y");
+				game2.scan(board, x, y, 2, i);
+			}
+			game2.victory(board, i);
+			if(victory==1){
+				break;
+			}
+
+		}
+
+	}
+
+}
