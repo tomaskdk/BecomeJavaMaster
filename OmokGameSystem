@@ -1,4 +1,4 @@
-# Game system and display..it prevents errors when receiving x,y / prints the board / determine victory
+//Game system and display..it prevents errors when receiving x,y / prints the board / determine victory
 package work;
 
 import java.util.Scanner;
