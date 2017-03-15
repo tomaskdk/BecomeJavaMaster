@@ -1,0 +1,44 @@
+//Main for Omok, all it does is receive the x,y variables and choose rules
+package work;
+
+import java.util.Scanner;
+
+public class MainOmok extends OmokGameSystem {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int board[][] = new int[18][18];
+		int x = 0;
+		int y = 0;
+		int length = 4;
+
+		System.out.println("Choose Rule");
+		System.out.println("1. One Player");
+		System.out.println("2. Two Players");
+
+		@SuppressWarnings("resource")
+		Scanner scanner2 = new Scanner(System.in);
+		int answer2 = scanner2.nextInt();
+
+		System.out.println("Choose Rule");
+		System.out.println("1. Four line");
+		System.out.println("2. Five line");
+
+		@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+		int answer = scanner.nextInt();
+		if (answer == 1) {
+			length = 4;
+		} else if (answer == 2) {
+			length = 5;
+		}
+
+		if (answer2 == 2) {
+			OmokGameSystem.TwoPlayer(board, x, y, length);
+		} else if (answer2 == 1) {
+			OmokGameSystem.OnePlayer(board, x, y, length);
+		}
+
+	}
+
+}
